@@ -3,8 +3,8 @@ import streamlit as st
 import pandas as pd
 import json
 from requerimiento2 import estadisticas_generales
-from requerimeinto_3 import analizar_categorias
-from requerimeinto5 import calcular_similitudes
+from requerimiento3 import analizar_categorias
+from requerimiento5 import calcular_similitudes
 import categorias
 
 # Título
