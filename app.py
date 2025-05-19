@@ -40,6 +40,63 @@ if uploaded_file:
 st.header("Frecuencia de categorías y Nube de Palabras (Requerimiento 3)")
 if st.button("Analizar categorías"):
     analyze_category_frequencies(data)
+# Mostrar imágenes generadas para Requerimiento 3
+st.header("Visualización de Imágenes de Frecuencia por Categoría")
+
+# Mostrar visualizaciones generadas del Requerimiento 3
+st.header("Visualizaciones de Requerimiento 3")
+
+image_folder = "resultados"  # Asegúrate que existan allí las imágenes
+
+# Listas de imágenes a mostrar
+bar_images = [
+    "3_Herramienta_frecuencia.png",
+    "3_Actitudes_frecuencia.png",
+    "3_Conceptos Computacionales_frecuencia.png",
+    "3_Diseño de Investigación_frecuencia.png",
+    "3_Estrategia_frecuencia.png",
+    "3_Habilidades_frecuencia.png",
+    "3_Herramienta de Evaluación_frecuencia.png",
+]
+
+wordcloud_images = [
+    "3_Herramienta_wordcloud.png",
+    "3_Actitudes_wordcloud.png",
+    "3_Conceptos Computacionales_wordcloud.png",
+    "3_Diseño de Investigación_wordcloud.png",
+    "3_Estrategia_wordcloud.png",
+    "3_Habilidades_wordcloud.png",
+    "3_Herramienta de Evaluación_wordcloud.png",
+    "3_wordcloud_general.png",
+]
+
+network_image = "3_co_word_network.png"
+
+# Mostrar gráficos de barras
+st.subheader("Gráficos de Barras de Frecuencia")
+for img in bar_images:
+    path = os.path.join(image_folder, img)
+    if os.path.exists(path):
+        st.image(path, caption=img.replace("_", " ").replace(".png", ""), use_column_width=True)
+    else:
+        st.warning(f"No se encontró la imagen: {img}")
+
+# Mostrar nubes de palabras
+st.subheader("Nubes de Palabras")
+for img in wordcloud_images:
+    path = os.path.join(image_folder, img)
+    if os.path.exists(path):
+        st.image(path, caption=img.replace("_", " ").replace(".png", ""), use_column_width=True)
+    else:
+        st.warning(f"No se encontró la imagen: {img}")
+
+# Mostrar red de co-ocurrencia
+st.subheader("Red de Co-ocurrencia (Co-Word Network)")
+network_path = os.path.join(image_folder, network_image)
+if os.path.exists(network_path):
+    st.image(network_path, caption="Co-Word Network", use_column_width=True)
+else:
+    st.warning("No se encontró la imagen de co-word network.")
 
 # Requerimiento 5: Agrupamiento por similitud
 st.header("Similitud entre abstracts (Requerimiento 5)")
