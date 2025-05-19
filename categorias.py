@@ -66,3 +66,5 @@ CATEGORIAS = {
         "BEE BOT", "CUBETTO", "Minecraft", "Agent Sheets", "Mimo", "Py– Learn", "SpaceChem"
     ]
 }
+def obtener_categorias():
+    return list(CATEGORIAS.keys())
