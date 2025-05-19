@@ -4,7 +4,7 @@ import pandas as pd
 import json
 import os
 from requerimiento2 import estadisticas_generales
-from requerimiento3 import analizar_categorias
+from requerimiento3 import category_counts
 from requerimiento5 import calcular_similitudes
 import categorias
 
@@ -29,7 +29,7 @@ if st.button("Generar estadísticas"):
 # Requerimiento 3: Frecuencia de categorías y nube de palabras
 st.header("Frecuencia de categorías y Nube de Palabras (Requerimiento 3)")
 if st.button("Analizar categorías"):
-    analizar_categorias(data)
+    category_counts(data)
 
 # Requerimiento 5: Agrupamiento por similitud
 st.header("Similitud entre abstracts (Requerimiento 5)")
