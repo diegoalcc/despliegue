@@ -68,9 +68,9 @@ wordcloud_images = [
     "3_Habilidades_wordcloud.png",
     "3_Herramienta de Evaluación_wordcloud.png",
     "3_wordcloud_general.png",
+    "nube_de_palabras.png"
 ]
 
-network_image = "3_co_word_network.png"
 
 # Mostrar gráficos de barras
 st.subheader("Gráficos de Barras de Frecuencia")
