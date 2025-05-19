@@ -38,6 +38,3 @@ if st.button("Calcular similitudes"):
 # Categorías
 st.sidebar.title("Categorías")
 st.sidebar.write(categorias.obtener_categorias())
-
-if __name__ == "__main__":
-    main()
