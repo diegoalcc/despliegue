@@ -34,6 +34,8 @@ if uploaded_file:
         # Mostrar visualizaciones del Requerimiento 2
         st.subheader("Visualizaciones del Requerimiento 2")
 
+image_folder = "resultados"
+
 imagenes_req2 = [
     "2_yearly_trends.png",
     "2_top_authors.png",
@@ -61,7 +63,7 @@ st.header("Visualización de Imágenes de Frecuencia por Categoría")
 # Mostrar visualizaciones generadas del Requerimiento 3
 st.header("Visualizaciones de Requerimiento 3")
 
-image_folder = "resultados"  # Asegúrate que existan allí las imágenes
+image_folder = "resultados" 
 
 # Listas de imágenes a mostrar
 bar_images = [
