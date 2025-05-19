@@ -6,6 +6,7 @@ from requerimiento2 import estadisticas_generales
 from requerimiento3 import analyze_category_frequencies
 from requerimiento5 import calcular_similitud_entre_abstracts
 import categorias 
+from flask import Flask, render_template
 
 # Título
 st.title("Despliegue Proyecto Final - Análisis de Algoritmos")
@@ -18,7 +19,7 @@ with open("processed_articles.json", encoding="utf-8") as f:
 
 # Mostrar una muestra del dataset
 if st.checkbox("Mostrar artículos procesados"):
-    st.json(data[:3])
+    st.json(data[:100])
 
 # Requerimiento 2: Estadísticas Generales
 st.title("Estadísticas Generales (Requerimiento 2)")
@@ -33,6 +34,25 @@ if uploaded_file:
         st.success("Estadísticas generadas correctamente.")
     except Exception as e:
         st.error(f"Error al procesar el archivo JSON: {e}")
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    # Lista de imágenes que se encuentran en static/img/
+    imagenes = [
+        "3_Herramienta_frecuencia.png",
+        "3_Actitudes_frecuencia.png",
+        "3_Conceptos Computacionales_frecuencia.png",
+        "3_Diseño de Investigación_frecuencia.png",
+        "3_Estrategia_frecuencia.png",
+        "3_Habilidades_frecuencia.png",
+        "3_Herramienta de Evaluación_frecuencia.png"
+    ]
+    return render_template("index.html", imagenes=imagenes)
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 # Requerimiento 3: Frecuencia de categorías y nube de palabras
 st.header("Frecuencia de categorías y Nube de Palabras (Requerimiento 3)")
