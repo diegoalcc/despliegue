@@ -5,7 +5,7 @@ import os
 from requerimiento2 import estadisticas_generales
 from requerimiento3 import analyze_category_frequencies
 from requerimiento5 import count_frequencies
-import categorias
+import categorias 
 
 # Título
 st.title("Despliegue Proyecto Final - Análisis de Algoritmos")
@@ -48,13 +48,10 @@ if st.button("Calcular similitudes"):
 st.sidebar.subheader("Selecciona una categoría")
 categoria_seleccionada = st.sidebar.selectbox(
     "Categorías disponibles",
-    categorias.obtener_categorias()
+    list(categorias.CATEGORIAS.keys())  # esto reemplaza a obtener_categorias si no existe
 )
 
-# Mostrar la categoría seleccionada
 st.write(f"Has seleccionado la categoría: **{categoria_seleccionada}**")
-
-# Mostrar los elementos de la categoría seleccionada
-st.write("Elementos de la categoría:")
+st.write("Elementos de la categoría seleccionada:")
 for item in categorias.CATEGORIAS[categoria_seleccionada]:
     st.markdown(f"- {item}")
