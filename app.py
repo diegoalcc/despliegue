@@ -31,6 +31,21 @@ if uploaded_file:
         data = json.load(uploaded_file)
         data = data[:1000]  # limitar si es necesario
         estadisticas_generales(data)
+        # Mostrar visualizaciones del Requerimiento 2
+st.subheader("Visualizaciones del Requerimiento 2")
+
+imagenes_req2 = [
+    "2_yearly_trends.png",
+    "2_top_authors.png",
+    "2top_journals.png",
+]
+
+for imagen in imagenes_req2:
+    ruta = os.path.join("data", imagen)
+    if os.path.exists(ruta):
+        st.image(ruta, caption=imagen.replace("_", " ").replace(".png", ""), use_column_width=True)
+    else:
+        st.warning(f"No se encontró la imagen: {imagen}")
         st.success("Estadísticas generadas correctamente.")
     except Exception as e:
         st.error(f"Error al procesar el archivo JSON: {e}")
