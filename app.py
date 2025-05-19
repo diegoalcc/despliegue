@@ -31,7 +31,9 @@ if uploaded_file:
         data = json.load(uploaded_file)
         data = data[:1000]  # limitar si es necesario
         estadisticas_generales(data)
-
+        st.success("Estadísticas generadas correctamente.")
+    except Exception as e:
+        st.error(f"Error al procesar el archivo JSON: {e}")
 
 
 # Requerimiento 3: Frecuencia de categorías y nube de palabras
@@ -44,7 +46,7 @@ st.header("Visualización de Imágenes de Frecuencia por Categoría")
 # Mostrar visualizaciones generadas del Requerimiento 3
 st.header("Visualizaciones de Requerimiento 3")
 
-image_folder = "resultados" 
+image_folder = "resultados"  # Asegúrate que existan allí las imágenes
 
 # Listas de imágenes a mostrar
 bar_images = [
@@ -118,6 +120,9 @@ categoria_seleccionada = st.sidebar.selectbox(
 )
 
 st.write(f"Has seleccionado la categoría: **{categoria_seleccionada}**")
+st.write("Elementos de la categoría seleccionada:")
+for item in categorias.CATEGORIAS[categoria_seleccionada]:
+    st.markdown(f"- {item}")
 st.write("Elementos de la categoría seleccionada:")
 for item in categorias.CATEGORIAS[categoria_seleccionada]:
     st.markdown(f"- {item}")
