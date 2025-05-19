@@ -34,7 +34,7 @@ if uploaded_file:
         # Mostrar visualizaciones del Requerimiento 2
         st.subheader("Visualizaciones del Requerimiento 2")
 
-imagenes_req2 = [
+    imagenes_req2 = [
     "2_yearly_trends.png",
     "2_top_authors.png",
     "2top_journals.png",
