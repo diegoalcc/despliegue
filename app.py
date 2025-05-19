@@ -32,7 +32,7 @@ if uploaded_file:
         data = data[:1000]  # limitar si es necesario
         estadisticas_generales(data)
         # Mostrar visualizaciones del Requerimiento 2
-st.subheader("Visualizaciones del Requerimiento 2")
+        st.subheader("Visualizaciones del Requerimiento 2")
 
 imagenes_req2 = [
     "2_yearly_trends.png",
