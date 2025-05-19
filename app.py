@@ -21,9 +21,18 @@ if st.checkbox("Mostrar artículos procesados"):
     st.json(data[:3])
 
 # Requerimiento 2: Estadísticas Generales
-st.header("Estadísticas Generales (Requerimiento 2)")
-if st.button("Generar estadísticas"):
-    estadisticas_generales(data)
+st.title("Estadísticas Generales (Requerimiento 2)")
+
+uploaded_file = st.file_uploader("Sube el archivo JSON procesado", type="json")
+
+if uploaded_file:
+    try:
+        data = json.load(uploaded_file)
+        data = data[:1000]  # limitar si es necesario
+        estadisticas_generales(data)
+        st.success("Estadísticas generadas correctamente.")
+    except Exception as e:
+        st.error(f"Error al procesar el archivo JSON: {e}")
 
 # Requerimiento 3: Frecuencia de categorías y nube de palabras
 st.header("Frecuencia de categorías y Nube de Palabras (Requerimiento 3)")
