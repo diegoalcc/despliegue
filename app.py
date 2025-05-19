@@ -44,6 +44,17 @@ st.header("Similitud entre abstracts (Requerimiento 5)")
 if st.button("Calcular similitudes"):
     count_frequencies(data)
 
-# Categorías
-st.sidebar.title("Categorías")
-st.sidebar.write(categorias.obtener_categorias())
+# Mostrar selector de categorías en el sidebar
+st.sidebar.subheader("Selecciona una categoría")
+categoria_seleccionada = st.sidebar.selectbox(
+    "Categorías disponibles",
+    categorias.obtener_categorias()
+)
+
+# Mostrar la categoría seleccionada
+st.write(f"Has seleccionado la categoría: **{categoria_seleccionada}**")
+
+# Mostrar los elementos de la categoría seleccionada
+st.write("Elementos de la categoría:")
+for item in categorias.CATEGORIAS[categoria_seleccionada]:
+    st.markdown(f"- {item}")
