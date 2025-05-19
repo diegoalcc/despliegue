@@ -4,7 +4,7 @@ import json
 import os
 from requerimiento2 import estadisticas_generales
 from requerimiento3 import analyze_category_frequencies
-from requerimiento5 import count_frequencies
+from requerimiento5 import calcular_similitud_entre_abstracts
 import categorias 
 
 # Título
@@ -42,7 +42,7 @@ if st.button("Analizar categorías"):
 # Requerimiento 5: Agrupamiento por similitud
 st.header("Similitud entre abstracts (Requerimiento 5)")
 if st.button("Calcular similitudes"):
-    count_frequencies(data)
+    calcular_similitud_entre_abstracts(data)
 
 # Mostrar selector de categorías en el sidebar
 st.sidebar.subheader("Selecciona una categoría")
