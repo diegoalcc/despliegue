@@ -2,6 +2,7 @@
 import streamlit as st
 import pandas as pd
 import json
+import os
 from requerimiento2 import estadisticas_generales
 from requerimiento3 import analizar_categorias
 from requerimiento5 import calcular_similitudes
@@ -38,3 +39,6 @@ if st.button("Calcular similitudes"):
 # Categorías
 st.sidebar.title("Categorías")
 st.sidebar.write(categorias.obtener_categorias())
+
+if __name__ == "__main__":
+    main()
