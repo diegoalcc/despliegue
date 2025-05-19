@@ -4,7 +4,7 @@ import json
 import os
 from requerimiento2 import estadisticas_generales
 from requerimiento3 import analyze_category_frequencies
-from requerimiento5 import count_frequencies, group_by_year_and_type, plot_bar_chart, plot_yearly_trends
+from requerimiento5 import count_frequencies
 import categorias
 
 # Título
@@ -33,7 +33,7 @@ if st.button("Analizar categorías"):
 # Requerimiento 5: Agrupamiento por similitud
 st.header("Similitud entre abstracts (Requerimiento 5)")
 if st.button("Calcular similitudes"):
-    count_frequencies, group_by_year_and_type, plot_bar_chart, plot_yearly_trends(data)
+    count_frequencies(data)
 
 # Categorías
 st.sidebar.title("Categorías")
