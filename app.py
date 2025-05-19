@@ -73,7 +73,10 @@ wordcloud_images = [
     "3_Habilidades_wordcloud.png",
     "3_Herramienta de Evaluación_wordcloud.png",
     "3_wordcloud_general.png",
-    "nube_de_palabras.png"
+    "3_Medio_wordcloud.png",
+    "3_Nivel de Escolaridad_wordcloud.png",
+    "3_Propiedades Psicométricas_wordcloud.png",
+    "3_wordcloud_general.png",
 ]
 
 network_image = "3_co_word_network.png"
