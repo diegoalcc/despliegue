@@ -2,6 +2,10 @@ import os
 import json
 import matplotlib.pyplot as plt
 import collections
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd
+import streamlit as st
 
 #############################################
 # CARGAR ARCHIVO JSON
@@ -80,6 +84,33 @@ def plot_yearly_trends(grouped_data, filename):
 #############################################
 # EJECUCIÓN DEL SCRIPT
 #############################################
+
+def calcular_similitud_entre_abstracts(data, top_n=5):
+    abstracts = [item.get("abstract", "") for item in data if item.get("abstract")]
+    if not abstracts:
+        st.warning("No se encontraron abstracts en los datos.")
+        return
+
+    vectorizer = TfidfVectorizer(stop_words='english')
+    X = vectorizer.fit_transform(abstracts)
+    similarity_matrix = cosine_similarity(X)
+
+    # Mostrar pares más similares
+    st.subheader(f"Top {top_n} pares de abstracts más similares")
+    results = []
+    for i in range(len(abstracts)):
+        for j in range(i + 1, len(abstracts)):
+            sim_score = similarity_matrix[i, j]
+            results.append((i, j, sim_score))
+
+    # Ordenar por similitud
+    results.sort(key=lambda x: x[2], reverse=True)
+
+    for i, j, score in results[:top_n]:
+        st.markdown(f"**Abstract {i} vs Abstract {j}** - Similaridad: {score:.2f}")
+        st.markdown(f"- {abstracts[i][:300]}...")
+        st.markdown(f"- {abstracts[j][:300]}...")
+        st.markdown("---")
 
 def main():
     """Procesa los datos y genera los gráficos solicitados."""
