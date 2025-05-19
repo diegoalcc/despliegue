@@ -12,7 +12,7 @@ st.title("Despliegue Proyecto Final - Análisis de Algoritmos")
 
 # Cargar datos
 st.header("Cargar archivo JSON procesado")
-with open("processed_articles.rar", encoding="utf-8") as f:
+with open("processed_articles.json", encoding="utf-8") as f:
     data = json.load(f)
     st.success("Archivo cargado correctamente.")
 
