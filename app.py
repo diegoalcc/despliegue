@@ -57,6 +57,11 @@ bar_images = [
     "3_Estrategia_frecuencia.png",
     "3_Habilidades_frecuencia.png",
     "3_Herramienta de Evaluación_frecuencia.png",
+    "3_Herramienta_frecuencia.png",
+    "3_Medio_frecuencia.png",
+    "3_Nivel de Escolaridad_frecuencia.png",
+    "3_Propiedades Psicométricas_frecuencia.png",
+    
 ]
 
 wordcloud_images = [
@@ -71,6 +76,7 @@ wordcloud_images = [
     "nube_de_palabras.png"
 ]
 
+network_image = "3_co_word_network.png"
 
 # Mostrar gráficos de barras
 st.subheader("Gráficos de Barras de Frecuencia")
