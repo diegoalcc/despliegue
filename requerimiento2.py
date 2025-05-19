@@ -1,12 +1,6 @@
 import os
-import json
 import matplotlib.pyplot as plt
 import collections
-
-def load_data(json_filepath):
-    with open(json_filepath, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return data[:1000]
 
 def count_frequencies(data, key, top_n=15):
     counter = collections.Counter([item.get(key, "Unknown").split(",")[0] for item in data])
@@ -47,21 +41,21 @@ def plot_yearly_trends(grouped_data, filename):
     plt.savefig(filename)
     plt.close()
 
-def estadisticas_generales(json_filepath="processed_articles.json"):
-    if not os.path.exists(json_filepath):
-        print(f"Archivo no encontrado: {json_filepath}")
-        return
+def estadisticas_generales(data, output_dir="resultados"):
+    """
+    Recibe una lista de artículos JSON (data) y genera gráficos estadísticos.
+    """
+    if not isinstance(data, list):
+        raise TypeError("Se esperaba una lista de artículos JSON como entrada.")
 
-    data = load_data(json_filepath)
+    os.makedirs(output_dir, exist_ok=True)
+
     top_authors = count_frequencies(data, "author")
     top_journals = count_frequencies(data, "journal")
     top_publishers = count_frequencies(data, "publisher")
     yearly_product_data = group_by_year_and_type(data)
 
-    results_folder = os.path.join(os.path.dirname(json_filepath), "resultados")
-    os.makedirs(results_folder, exist_ok=True)
-
-    plot_bar_chart(top_authors, "Top 15 Autores con Más Publicaciones", "Cantidad de Publicaciones", "Autores", os.path.join(results_folder, "2_top_authors.png"))
-    plot_bar_chart(top_journals, "Top 15 Journals con Más Publicaciones", "Cantidad de Publicaciones", "Journals", os.path.join(results_folder, "2_top_journals.png"))
-    plot_bar_chart(top_publishers, "Top 15 Publishers con Más Publicaciones", "Cantidad de Publicaciones", "Publishers", os.path.join(results_folder, "2_top_publishers.png"))
-    plot_yearly_trends(yearly_product_data, os.path.join(results_folder, "2_yearly_trends.png"))
+    plot_bar_chart(top_authors, "Top 15 Autores con Más Publicaciones", "Cantidad de Publicaciones", "Autores", os.path.join(output_dir, "2_top_authors.png"))
+    plot_bar_chart(top_journals, "Top 15 Journals con Más Publicaciones", "Cantidad de Publicaciones", "Journals", os.path.join(output_dir, "2_top_journals.png"))
+    plot_bar_chart(top_publishers, "Top 15 Publishers con Más Publicaciones", "Cantidad de Publicaciones", "Publishers", os.path.join(output_dir, "2_top_publishers.png"))
+    plot_yearly_trends(yearly_product_data, os.path.join(output_dir, "2_yearly_trends.png"))
